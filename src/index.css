@@ -1,0 +1,33 @@
+@tailwind base;
+
+:root {
+  --color-primary: #ff602c;
+  --color-background: #1d1d1d;
+  --color-navbg: rgba(89, 86, 86, 0.29);
+  --color-cardbg: rgba(89, 86, 86, 0.4);
+  --font-inter: "Inter", sans-serif;
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+  background: #fffff;
+}
+
+/* Custom styles that extend Tailwind */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
