@@ -1,12 +1,26 @@
-# React + Vite
+এসাইনমেন্টে আপনাকে যা যা করতে হবেঃ
+✓ আগের এসাইনমেন্ট গুলোর মতই নতুন vite react javascript প্রজেক্ট তৈরি করে এসাইনমেন্ট টি করতে হবে । টাইপস্ক্রিপ্ট ব্যবহার করা যাবেনা ।
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✓ আপনাকে একটি ডামি Array of Object তৈরি করতে হবে, যেখানে একাধিক প্রোডাক্টের তথ্য থাকবে (যেমনঃ নাম, দাম, ছবি, স্টক ইত্যাদি)। এরপর সেই ডাটা ব্যবহার করে Your Products সেকশনে প্রোডাক্টগুলো ডাইনামিকভাবে রেন্ডার করতে হবে। খেয়াল রাখতে হবে, প্রতিটি Product Card-এ যেসব তথ্য দেখানো হয়েছে (যেমন প্রোডাক্টের নাম, প্রাইস, স্টক, ইমেজ এবং বাটনসমূহ) — সেগুলো যেন সবই ডামি ডাটার উপর ভিত্তি করে ডাইনামিকভাবে প্রদর্শিত হয় ।
 
-Currently, two official plugins are available:
+✓ Product Card এ থাকা, "Add to Cart" বাটনে ক্লিক করলে, "YOUR CART" সেকশনে সেই প্রোডাক্টটি দেখাবে। সেই সাথে "Add to Cart" বাটনের পরিবর্তে "Remove from Cart" বাটন দেখাতে হবে ।
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✓ Product এর stock ম্যানেজ করতে হবে । অর্থাৎ, কোনো প্রোডাক্ট এর stock যদি 0 হয়, তবে সেই প্রোডাক্ট আর Add to Cart এ এড করা যাবে না এবং "Add to Cart" বাটন disable করে দিতে হবে ।
 
-## Expanding the ESLint configuration
+✓ "YOUR CART" সেকশনে যেসব প্রোডাক্ট যোগ হবে, প্রতিটি প্রোডাক্টের পাশে একটি + এবং একটি - বাটন থাকবে। এই বাটনগুলো ব্যবহার করে প্রোডাক্টের Quantity (পরিমাণ) বাড়ানো বা কমানো যাবে। + বাটনে ক্লিক করলে পরিমাণ বাড়বে, আর - বাটনে ক্লিক করলে তা কমে যাবে।
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✓ + বাটনে ক্লিক করে একটি প্রোডাক্ট তার সর্বোচ্চ স্টকের পরিমাণ পর্যন্ত কার্টে যোগ করা যাবে। আবার - বাটনে ক্লিক করে সেই প্রোডাক্টের পরিমাণ সর্বনিম্ন ১ পর্যন্ত কমিয়ে আনা যাবে — এর নিচে আর নামানো যাবে না।
+
+✓ YOUR CART সেকশনের Product গুলোর ক্ষেত্রেও stock ম্যানেজ করতে হবে। অর্থাৎ quantity বাড়লে Stock থেকে কমাতে হবে। এবং quantity কমে গেলে Stock বাড়াতে হবে । এবং Stock এর কমা/বাড়া "Your Products" সেকশনে থাকা কার্ড গুলোকেও Update করবে ।
+
+✓ YOUR CART সেকশনে একটি ডিলিট বাটন আছে যা × সাইন দিয়ে বোঝানো হয়েছে । এই বাটনে ক্লিক করলে প্রোডাক্টটি cart থেকে সরে যাবে এবং Product List এ Product এর quantity পুনরায় যুক্ত হবে এবং "Remove from Cart" বাটন "Add to Cart" বাটনে পরিবর্তিত হবে ।
+
+✓ YOUR CART সেকশনের নিচের দিকে Order Summary পেজ রয়েছে । সেখানে Subtotal ক্যাল্কুলেট করে দেখাতে হবে । ক্যাল্কুলেশন এর ক্ষেত্রে Product Price এবং Quantity এর উপরে ভিত্তি করে Subtotal দেখাতে হবে । Discount সব সময় 20% ই থাকবে, Delivery Fee যা আছে তাই থাকবে, প্রতিটা প্রোডাক্টের একটি রেটিং থাকবে 5 এর মধ্যে যেটা আপনি ডামি Array তে হার্ডকোড করে রাখতে পারেন এবং সব কিছুর উপরে ভিত্তি করে Total Amount ক্যাল্কুলেট করতে হবে ।
+
+✓ Your Products শিরোনামের পাশে Sort By নামের একটি অপশন থাকবে। এই অপশন ব্যবহার করে আপনি প্রোডাক্টগুলোকে Popularity (জনপ্রিয়তা), Newest (নতুনত্ব) এবং Price (মূল্য) – এই তিনটি ক্রাইটেরিয়ার ভিত্তিতে সাজাতে (Sort করতে) পারবেন।
+
+✓ উপরের Search Bar-এ প্রোডাক্টের নাম লিখে সার্চ করা যাবে। সার্চের রেজাল্ট Your Products সেকশনেই দেখাতে হবে। যদি Search Bar ফাঁকা থাকে, তাহলে সকল প্রোডাক্ট দেখাতে হবে। আর যদি ব্যবহারকারী কিছু লিখে সার্চ করেন, তাহলে শুধুমাত্র সেই প্রোডাক্টগুলো দেখাতে হবে যেগুলোর টাইটেলে সার্চ করা শব্দটি মিলে। যদি কোনো প্রোডাক্টই মিলে না যায়, তাহলে প্রোডাক্ট কার্ডের পরিবর্তে "Not Found" ধরনের একটি বার্তা দেখাতে হবে।
+
+✓ সব শেষে এটি খেয়াল রাখতে হবে, পুরো এসাইনমেন্টে আপনি যথাযত জায়গায় Context API এবং useReducer ব্যবহার করেছেন । আপনি এই মডিউলে শেখানো টপিক গুলো এবং এর আগে শেখানো সবকিছু কতো সুন্দর করে ইমপ্লিমেন্ট করে কাজটি করতে পারেন, সেটাই এই এসাইনমেন্টের মুখ্য বিষয়।
+
+✓ এখন পর্যন্ত শেখানো টপিক গুলো ব্যবহার করেই আপনাকে এসাইনমেন্টটি করতে হবে। পরবর্তীতে শেখানো হবে এমন কোন কিছু আপনি ব্যবহার করতে পারবেন না।
