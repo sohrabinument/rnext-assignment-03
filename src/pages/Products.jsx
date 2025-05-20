@@ -1,58 +1,33 @@
-import { useState } from "react";
-import { products } from "../data/products";
-import ProductCard from "../components/ProductCard";
+import { useContext } from "react";
 import Dropdown from "../components/Dropdown";
-import { sortOptions } from "../constants";
 import MiniCart from "../components/MiniCart";
+import ProductCard from "../components/ProductCard";
+import { CartContext } from "../context/CartContext";
+import { ACTIONS, sortBy, sortOptions } from "../constants";
+import { getSortedProducts } from "../utils/helper";
 
 const Products = () => {
-  const [sortBy, setSortBy] = useState("");
-  const [cartItems, setCartItems] = useState([]);
-  const [productList, setProductList] = useState([...products]);
+  const { state, dispatch } = useContext(CartContext);
+  const { products, searchQuery } = state;
 
   const handleSortChange = (e) => {
-    const selected = e.target.value;
-    setSortBy(selected);
-
-    let sorted = [...productList];
-
-    switch (selected) {
-      case "price-high":
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      case "price-low":
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case "newest":
-        sorted.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
-        break;
-      case "popular":
-        sorted.sort((a, b) => b.rating - a.rating);
-      default:
-        sorted;
-    }
-
-    setProductList(sorted);
+    const sortedProducts = getSortedProducts(products, e.target.value);
+    dispatch({ type: ACTIONS.SET_PRODUCTS, payload: sortedProducts });
   };
 
-  const handleProduct = (product) => {
-    // Update Product Info
-    const { inCart, stock } = product;
-    const updatedProduct = {
-      ...product,
-      inCart: !inCart,
-      stock: inCart ? stock + 1 : stock - 1,
-    };
-
-    // Update the productList to reflect the change
-    const updatedList = productList.map((item) =>
-      item.id === product.id ? updatedProduct : item
-    );
-    const updatedCart = updatedList.filter((item) => item.inCart);
-
-    setProductList(updatedList);
-    setCartItems(updatedCart);
+  const toggleCartItem = (product) => {
+    dispatch({
+      type: product.inCart ? ACTIONS.REMOVE_FROM_CART : ACTIONS.ADD_TO_CART,
+      payload: product,
+    });
   };
+
+  // Filter products by search query
+  const filteredProducts = searchQuery
+    ? products.filter((p) =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : products;
 
   return (
     <main className="container mx-auto px-4 md:px-8 py-8">
@@ -62,24 +37,30 @@ const Products = () => {
             <h2 className="text-2xl font-bold">Your Products</h2>
             <Dropdown
               label="Sort by:"
+              value={sortBy.DEFAULT}
               options={sortOptions}
-              value={sortBy}
               onChange={handleSortChange}
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {productList.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onClick={() => handleProduct(product)}
-              />
-            ))}
-          </div>
+          {filteredProducts.length ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onProductClick={() => toggleCartItem(product)}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="col-span-full text-center py-8 text-gray-500">
+              No products found
+            </div>
+          )}
         </div>
 
-        <MiniCart cartItems={cartItems} />
+        <MiniCart />
       </div>
     </main>
   );

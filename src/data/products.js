@@ -8,7 +8,7 @@ export const products = [
     stock: 5,
     image: "/assets/img/image 1.png",
     inCart: false,
-    dateAdded: "2024-06-10T10:00:00Z",
+    createdDate: "2024-06-10T10:00:00Z",
   },
   {
     id: crypto.randomUUID(),
@@ -19,7 +19,7 @@ export const products = [
     stock: 10,
     image: "/assets/img/image 10-1.png",
     inCart: false,
-    dateAdded: "2024-06-15T14:30:00Z",
+    createdDate: "2024-06-15T14:30:00Z",
   },
   {
     id: crypto.randomUUID(),
@@ -30,7 +30,7 @@ export const products = [
     stock: 3,
     image: "/assets/img/image 10-2.png",
     inCart: false,
-    dateAdded: "2024-06-08T09:20:00Z",
+    createdDate: "2024-06-08T09:20:00Z",
   },
   {
     id: crypto.randomUUID(),
@@ -41,7 +41,7 @@ export const products = [
     stock: 5,
     image: "/assets/img/image 7-1.png",
     inCart: false,
-    dateAdded: "2024-06-18T17:45:00Z",
+    createdDate: "2024-06-18T17:45:00Z",
   },
   {
     id: crypto.randomUUID(),
@@ -52,7 +52,7 @@ export const products = [
     stock: 6,
     image: "/assets/img/image 8-2.png",
     inCart: false,
-    dateAdded: "2024-06-11T08:00:00Z",
+    createdDate: "2024-06-11T08:00:00Z",
   },
   {
     id: crypto.randomUUID(),
@@ -63,7 +63,7 @@ export const products = [
     stock: 7,
     image: "/assets/img/image 8.png",
     inCart: false,
-    dateAdded: "2024-06-09T11:15:00Z",
+    createdDate: "2024-06-09T11:15:00Z",
   },
   {
     id: crypto.randomUUID(),
@@ -74,7 +74,7 @@ export const products = [
     stock: 5,
     image: "/assets/img/image 9-1.png",
     inCart: false,
-    dateAdded: "2024-06-13T13:30:00Z",
+    createdDate: "2024-06-13T13:30:00Z",
   },
   {
     id: crypto.randomUUID(),
@@ -85,7 +85,7 @@ export const products = [
     stock: 5,
     image: "/assets/img/image 9-2.png",
     inCart: false,
-    dateAdded: "2024-06-12T16:00:00Z",
+    createdDate: "2024-06-12T16:00:00Z",
   },
   {
     id: crypto.randomUUID(),
@@ -96,6 +96,6 @@ export const products = [
     stock: 5,
     image: "/assets/img/image 9.png",
     inCart: false,
-    dateAdded: "2024-06-07T10:30:00Z",
+    createdDate: "2024-06-07T10:30:00Z",
   },
 ];
