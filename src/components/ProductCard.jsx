@@ -1,6 +1,6 @@
 import Ratings from "./Ratings";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onClick }) => {
   return (
     <div className="bg-gray-100 rounded-lg overflow-hidden transition-transform hover:scale-[1.02] duration-300">
       <div className="h-48 bg-gray-200 flex items-center justify-center">
@@ -34,6 +34,7 @@ const ProductCard = ({ product }) => {
           )}
         </div>
         <button
+          onClick={onClick}
           className={`w-full mt-2 py-1 text-gray-100 rounded flex items-center justify-center active:translate-y-1 transition-all ${
             product.inCart
               ? "bg-red-800"
